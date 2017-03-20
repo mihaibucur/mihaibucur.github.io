@@ -6,26 +6,36 @@
     <meta name="description" content="Mihaibucur.github.io : ">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <title>Mihai Bucur</title>
-    <!--<script type="text/javascript" src="main.js"></script>  -->    
-    <script type="text/javascript">
-      document.getElementByClassName("dBresult").innerHTML = $('input[name=referencePowLev], input[name=measuredPowLev]').keyup(function() {
-    var divParent = $(this).closest('div');
-    var referencePowLev = $('input[name=referencePowLev]', divParent).val()-0;
-    var measuredPowLev = $('input[name=measuredPowLev]', divParent).val()-0;
-    if (referencePowLev >= 0 && measuredPowLev >= 0)
-        $('span.dBresult', divParent).text(10*Math.log10(measuredPowLev/referencePowLev));
-});
-    </script>
-    
   </head>
   <body>
-<form>
-  <div>
-    <input name=referencePowLev />
-    <input name=measuredPowLev />
-    <span class=dBresult></span>
-</div>
-</form>    
+	<h4>dB Calculator</h4>
+	<form>
+		<div>
+			<table>
+			<tr>
+				<td><b>Reference Power Level:</b> <input name=referencePowLev /></td>
+			</tr>
+			<tr>
+				<td><b>Measured Power Level:</b> <input name=measuredPowLev /></td>
+			</tr>
+			<tr>
+				<td><b>dB Result:</b><span class=dBresult></span></td>
+			</tr>
+			</table>
+		</div>
+	</form> 
+		//<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="javascripts/jquery-3.2.0.js"></script>  
+		<script language="JavaScript" type="text/javascript" >
+			$(".dBresult").innerHTML = $('input[name=referencePowLev], input[name=measuredPowLev]').keyup(function() {
+			var divParent = $(this).closest('div');
+			var referencePowLev = $('input[name=referencePowLev]', divParent).val()-0;
+			var measuredPowLev = $('input[name=measuredPowLev]', divParent).val()-0;
+			if (referencePowLev >= 0 && measuredPowLev >= 0)
+				$('span.dBresult', divParent).text(10*Math.log10(measuredPowLev/referencePowLev));
+				});
+		</script>
+
     
     
     
@@ -60,5 +70,5 @@
 -->
     
 
-  </body>
+ </body>
 </html>

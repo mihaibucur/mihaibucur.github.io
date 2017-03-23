@@ -25,7 +25,27 @@
 	<p>dB = 10 log<sub>10</sub> (<sup>P1</sup>&frasl;<sub>P2</sub>)</p>  
 	<p>P1 = Measured Power Level (e.g in Watts)</p>
 	<p>P2 = Reference Power Level (e.g in Watts)</p>
-
+	<br>
+	<br>
+	<br>
+	<h4>dBm Calculator</h4>
+	<form>
+		<div>
+			<table>
+			<tr>
+				<td><b>Measured Power Level:</b> <input name=measuredPowLev /></td>
+			</tr>
+			<tr>
+				<td><b>dBm Result:</b><span class=dBmresult></span></td>
+			</tr>
+			</table>
+		</div>
+	</form> 
+	 
+	<p>Measured Power | dBm = 10 log<sub>10</sub> (<sup>P1</sup>&frasl;<sub>P2</sub>)</p>  
+	<p>P1 = Measured Power Level</p> 
+	<p>P2 = Reference Power Level (for Absolute Measuremets P2 is defined to 1 mW)</p>  
+	    
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="javascripts/jquery-3.2.0.js"></script>  
 		<script language="JavaScript" type="text/javascript" >
@@ -37,8 +57,13 @@
 				$('span.dBresult', divParent).text(10*Math.log10(measuredPowLev/referencePowLev));
 				});
 		</script>
-
-    
-
+	    	<script language="JavaScript" type="text/javascript" >
+			$(".dBmResult").innerHTML = $('input[name=measuredPowLev]').keyup(function() {
+			var divParent = $(this).closest('div');
+			var measuredPowLev = $('input[name=measuredPowLev]', divParent).val()-0;
+			if (measuredPowLev >= 0)
+				$('span.dBmResult', divParent).text(10*Math.log10(measuredPowLev));
+				});
+		</script>
  </body>
 </html>
